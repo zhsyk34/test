@@ -36,5 +36,5 @@
     <!-- job的配置结束 -->
 
     <!-- 工作的bean -->
-    <bean id="myJob" class=" com.cat.task.MyTask"/>
+    <bean id="myJob" class=" com.cat.test.web.task.UserTask"/>
 </beans>

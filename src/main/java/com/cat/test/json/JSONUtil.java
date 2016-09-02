@@ -1,4 +1,4 @@
-package com.cat.task;
+package com.cat.test.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;

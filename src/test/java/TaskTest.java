@@ -5,6 +5,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TaskTest {
 
     public static void main(String[] args) {
-        ApplicationContext springContext = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"});
+        ApplicationContext springContext = new ClassPathXmlApplicationContext(new String[]{"classpath:spring3.xml"});
     }
 }

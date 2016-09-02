@@ -1,4 +1,4 @@
-package com.cat.task;
+package com.cat.test.http;
 
 import java.io.*;
 import java.net.HttpURLConnection;

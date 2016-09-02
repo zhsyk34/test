@@ -1,6 +1,4 @@
-package com.cat.task;
-
-import org.json.JSONObject;
+package com.cat.test.http;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,14 +41,14 @@ public class HttpTest {
         prop.put("address", "beijing");
         map.put("person", prop);*/
 
-        JSONObject json = new JSONObject(map);
-        String params = json.toString();
+//        JSONObject json = new JSONObject(map);
+//        String params = json.toString();
         /*System.out.println(params);*/
 
        /* String input = "{\"address\":\"beijing\",\"name\":\"cjj\",\"age\":33}";
         System.out.println(new JSONObject(input).toString());*/
 
-        String s = ConnectionUtil.post("http://localhost:8080/door/vanke/open", null, params);
-        System.out.println(s);
+//        String s = ConnectionUtil.post("http://localhost:8080/door/vanke/open", null, params);
+//        System.out.println(s);
     }
 }

@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <property name="app" value="zsy-app"></property>
-    <property name="file" value="logs/log.log"></property>
-    <property name="date" value="logs/date.log"></property>
-    <property name="prefix" value="logs/date-"></property>
+    <property name="app" value="test"></property>
+    <property name="prefix" value="d:/logs/"></property>
 
-    <timestamp key="format" datePattern="yyyyMMdd'T'HHmmss"/>
+    <timestamp key="format" datePattern="yyyy-MM-dd HH:mm:ss"/>
 
-    <contextName>${app}</contextName>
+    <!--<contextName>${app}</contextName>-->
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder的默认实现类是ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %m%n %level</pattern>
+            <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{5} - %m%n %level</pattern>
         </encoder>
     </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>${file}</file>
+    <appender name="TASK" class="ch.qos.logback.core.FileAppender">
+        <file>d:/logs/task.log</file>
         <encoder>
-            <pattern>%F %-4r %c %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</pattern>
         </encoder>
         <append>true</append>
         <prudent>false</prudent>
     </appender>
 
     <!--滚动日志-->
-    <appender name="ROLL" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/current.log</file>
+    <appender name="WEB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<file>d:/logs/roll.log</file>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--zip压缩-->
-            <fileNamePattern>prefix-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${prefix}%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>365</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</pattern>
         </encoder>
-        <append>false</append>
+        <append>true</append>
         <prudent>false</prudent>
     </appender>
 
-    <logger name="com.cat.task" level="INFO" additivity="false">
-        <appender-ref ref="ROLL"/>
+    <logger name="com.cat.test.web.task" level="DEBUG" additivity="false">
+        <appender-ref ref="TASK"/>
+    </logger>
+
+    <logger name="com.cat.test.web.controller" level="DEBUG" additivity="false">
+        <appender-ref ref="WEB"/>
     </logger>
 
     <!-- root的默认level是DEBUG -->
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="TASK"/>
+        <appender-ref ref="WEB"/>
     </root>
 </configuration>
